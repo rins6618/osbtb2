@@ -21,6 +21,10 @@ void user_input(char* input) {
     } else if (strcmp("MALLOC", input) == 0) {
         u32 phys_addr;
         u32 page = kmalloc(1000, 1, &phys_addr);
+
+        // NOTE ON CODE BELOW: Since you just called a big function with lots of stack variables (kmalloc), these following values will have garbage.
+        // Zero them out or you'll have weird characters on the address strings.
+        
         char page_str[16] = {0};
         hex_to_ascii(page, page_str);
         char addr_str[16] = {0};
