@@ -1,5 +1,7 @@
 [org 0x7c00] ; bootloader offset
 KERNEL_OFFSET equ 0x1000
+[global _start]
+_start:
 
     mov [BOOT_DRIVE], dl
     mov bp, 0x9000 ; set the stack
